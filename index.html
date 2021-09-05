@@ -44,7 +44,7 @@
           <li>색 설정 창에서 찾고자 하는 색의 RGB 또는 HEX 값을 입력합니다.</li>
           <li>일치수와 오차값을 설정합니다.</li>
           <li>반드시 일치해야하는 번호가 있을 경우 해당 일치 번호를 선택합니다.</li>
-          <li>시작 버튼을 누르거나 시작 단축키(Ctrl+Shift+S)를 입력합니다.
+          <li>시작 버튼을 누르거나 시작 단축키(기본값: Ctrl+Shift+S)를 입력합니다.
             <ul>
               <li>색을 찾는 도중에 중단하고 싶을 때는 같은 단축키를 입력합니다.</li>
             </ul>
@@ -71,25 +71,22 @@
           <li>색 목록에서 색 설정과 일치하는 색은 RGB 오차값과 함께 빨간 글씨로 표시됩니다.</li>
           <li>색 목록에서 항목을 더블 클릭하면 바로 즐겨찾기로 추가할 수 있는 창이 표시됩니다.</li>
         </ul>
-        <hr />
-        <div id="disqus_thread"></div>
-          <script>
-            /**
-            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-            var disqus_config = function () {
-              this.page.url = "https://madyedev.github.io";  // Replace PAGE_URL with your page's canonical URL variable
-              this.page.identifier = "madye-main"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-            };
-            (function() { // DON'T EDIT BELOW THIS LINE
-              var d = document, s = d.createElement('script');
-              s.src = 'https://madye.disqus.com/embed.js';
-              s.setAttribute('data-timestamp', +new Date());
-              (d.head || d.body).appendChild(s);
-            })();
-          </script>
-          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        </div>
+        <h2>FAQ</h2>
+        <h3>"염색창을 탐지하는데 실패하였습니다." 오류가 뜹니다.</h3>
+        <p>
+          Windows 10 이상의 운영체제에서 고해상도 모니터 이용시 높은 DPI 설정을 이용하면 프로그램이 정상 작동하지 않습니다.
+          아래 두 가지 방법 중 하나를 적용 후, 재실행 후 다시 시도해보세요.
+        </p>
+        <h4>디스플레이 설정을 건드리지 않는 방법</h3>
+        <p>
+          게임 클라이언트 파일(Client.exe) 우클릭 → 속성 → 호환성 → 높은 DPI 설정 변경 → 높은 DPI 조정 재정의 항목을 아래와 같이 설정
+          <img src="images/faq-hidpi.png" style="max-width: 100%;">
+        </p>
+        <h4>디스플레이 설정을 바꾸는 방법</h4>
+        <p>
+          바탕화면 우클릭 → 디스플레이 설정 → 배율 및 레이아웃 항목을 아래와 같이 설정
+          <img src="images/faq-layout.png" style="max-width: 100%;">
+        </p>
       </section>
     <div class="outer" id="footer_wrap">
       <footer class="inner">
