@@ -1,0 +1,6 @@
+{
+    "version": "0.2.3",
+    "all": "https://github.com/madyedev/madyedev.github.io/releases/download/v%VERSION%/madye-v%VERSION%.zip",
+    "exe": "https://github.com/madyedev/madyedev.github.io/releases/download/v%VERSION%/madye-v%VERSION%.exe.zip",
+    "md5sums": "https://github.com/madyedev/madyedev.github.io/releases/download/v%VERSION%/madye-v%VERSION%-md5sums.txt"
+}
