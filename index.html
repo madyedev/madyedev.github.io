@@ -7,6 +7,43 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-125827389-1');
+
+      function loadJson(path, header, done) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200)
+            done(JSON.parse(xhr.responseText))
+        };
+        xhr.open("GET", path, true);
+        if (header) {
+          Object.keys(header).forEach(function (key) {
+            xhr.setRequestHeader(key, header[key])
+          })
+        }
+        xhr.send()
+      }
+
+      function iterateElementByClassName(cls, fn) {
+        var array = document.getElementsByClassName(cls)
+        for (var i = 0; i < array.length; ++i)
+          fn(array[i], i, array)
+      }
+
+      function setLatest(version, url, datetime) {
+        iterateElementByClassName("latest_download_anchor", function (a) { a.setAttribute("href", url) })
+        var year = datetime.getFullYear()
+        var month = datetime.getMonth() + 1
+        var date = datetime.getDate()
+        var latest = "madye-v" + version + " (" + year + "/" + month + "/" + date + ")"
+        iterateElementByClassName("latest_release_text", function (elem) { elem.innerHTML = latest })
+      }
+      loadJson("https://madyedev.github.io/update.json", {}, function (json) {
+        var version = json["version"]
+        var url = json["all"].replace(/%VERSION%/g, version)
+        loadJson("https://api.github.com/repos/madyedev/madyedev.github.io/releases/tags/v" + version,
+                 {accept: "application/vnd.github.v3+json"},
+                 function (json) { setLatest(version, url, new Date(json["published_at"])) })
+      })
     </script>
     <title>madye</title>
     <meta charset="utf-8">
@@ -21,7 +58,7 @@
     <div class="outer" id="header_wrap">
       <header class="inner">
         <h1 id="project_title">madye</h1>
-        <section id="downloads"><a class="zip_download_link" href="https://github.com/madyedev/madyedev.github.io/releases/download/v0.2.6/madye-v0.2.6.zip">다운로드</a></section>
+        <section id="downloads"><a class="zip_download_link latest_download_anchor" href="https://github.com/madyedev/madyedev.github.io/releases/latest">다운로드</a></section>
       </header>
     </div>
     <div class="outer" id="main_content_wrap">
@@ -29,7 +66,7 @@
         <p><strong>본 페이지의 정보와 프로그램을 사용함으로 인한 모든 책임은 사용자에게 있습니다.</strong></p>
         <h2>다운로드</h2>
         <ul>
-          <li>최신 버전(2021/09/06): <a href="https://github.com/madyedev/madyedev.github.io/releases/download/v0.2.6/madye-v0.2.6.zip"> madye 0.2.6</a></li>
+          <li>최신 버전: <a class="latest_download_anchor latest_release_text" href="https://github.com/madyedev/madyedev.github.io/releases/latest">madye</span></a></li>
           <li>기존 유저는 personal 폴더만 옮겨주면 기존의 기록과 설정이 유지됩니다.</li>
         </ul>
         <h2>프로그램 정보</h2>
