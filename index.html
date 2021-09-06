@@ -35,7 +35,10 @@
         var month = datetime.getMonth() + 1
         var date = datetime.getDate()
         var latest = "madye-v" + version + " (" + year + "/" + month + "/" + date + ")"
-        iterateElementByClassName("latest_release_text", function (elem) { elem.innerHTML = latest })
+        iterateElementByClassName("latest_release_text", function (elem) { 
+          elem.innerHTML = latest 
+        })
+        iterateElementByClassName("latest_visible", function (elem) { elem.style = "visibility: visible;" })
       }
       loadJson("https://madyedev.github.io/update.json", {}, function (json) {
         var version = json["version"]
@@ -58,7 +61,10 @@
     <div class="outer" id="header_wrap">
       <header class="inner">
         <h1 id="project_title">madye</h1>
-        <section id="downloads"><a class="zip_download_link latest_download_anchor" href="https://github.com/madyedev/madyedev.github.io/releases/latest">다운로드</a></section>
+        <section id="downloads" class="latest_visible" style="visibility: hidden;"><a
+          class="zip_download_link latest_download_anchor"
+          href="https://github.com/madyedev/madyedev.github.io/releases/latest"
+        >다운로드</a></section>
       </header>
     </div>
     <div class="outer" id="main_content_wrap">
@@ -66,7 +72,7 @@
         <p><strong>본 페이지의 정보와 프로그램을 사용함으로 인한 모든 책임은 사용자에게 있습니다.</strong></p>
         <h2>다운로드</h2>
         <ul>
-          <li>최신 버전: <a class="latest_download_anchor latest_release_text" href="https://github.com/madyedev/madyedev.github.io/releases/latest">madye</span></a></li>
+          <li>최신 버전: <span class="latest_download_placeholder"></span><a class="latest_download_anchor latest_release_text">확인중...</span></a></li>
           <li>기존 유저는 personal 폴더만 옮겨주면 기존의 기록과 설정이 유지됩니다.</li>
         </ul>
         <h2>프로그램 정보</h2>
