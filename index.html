@@ -7,47 +7,8 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-125827389-1');
-
-      function loadJson(path, header, done) {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200)
-            done(JSON.parse(xhr.responseText))
-        };
-        xhr.open("GET", path, true);
-        if (header) {
-          Object.keys(header).forEach(function (key) {
-            xhr.setRequestHeader(key, header[key])
-          })
-        }
-        xhr.send()
-      }
-
-      function iterateElementByClassName(cls, fn) {
-        var array = document.getElementsByClassName(cls)
-        for (var i = 0; i < array.length; ++i)
-          fn(array[i], i, array)
-      }
-
-      function setLatest(version, url, datetime) {
-        iterateElementByClassName("latest_download_anchor", function (a) { a.setAttribute("href", url) })
-        var year = datetime.getFullYear()
-        var month = datetime.getMonth() + 1
-        var date = datetime.getDate()
-        var latest = "madye-v" + version + " (" + year + "/" + month + "/" + date + ")"
-        iterateElementByClassName("latest_release_text", function (elem) { 
-          elem.innerHTML = latest 
-        })
-        iterateElementByClassName("latest_visible", function (elem) { elem.style = "visibility: visible;" })
-      }
-      loadJson("https://madyedev.github.io/update.json", {}, function (json) {
-        var version = json["version"]
-        var url = json["all"].replace(/%VERSION%/g, version)
-        loadJson("https://api.github.com/repos/madyedev/madyedev.github.io/releases/tags/v" + version,
-                 {accept: "application/vnd.github.v3+json"},
-                 function (json) { setLatest(version, url, new Date(json["published_at"])) })
-      })
     </script>
+    <script src="index.js"></script>
     <title>madye</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
@@ -56,6 +17,7 @@
     <meta name="app:exe" content="https://github.com/madyedev/madyedev.github.io/releases/download/v0.2.6/madye-v0.2.6.exe.zip">
     <meta name="app:md5sums" content="https://github.com/madyedev/madyedev.github.io/releases/download/v0.2.6/madye-v0.2.6-md5sums.txt">
     <link rel="stylesheet" type="text/css" media="screen" href="index.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
   </head>
   <body>
     <div class="outer" id="header_wrap">
@@ -115,7 +77,7 @@
           <li>색 목록에서 항목을 더블 클릭하면 바로 즐겨찾기로 추가할 수 있는 창이 표시됩니다.</li>
         </ul>
         <h2>FAQ</h2>
-        <h3 id="faq-failed-to-detect-dye-window">"염색창을 탐지하는데 실패하였습니다." 오류가 뜹니다.</h3>
+        <h3 id="faq-failed-to-detect-dye-window"><a class="page_anchor" href="#faq-failed-to-detect-dye-window">"염색창을 탐지하는데 실패하였습니다." 오류가 뜹니다.</a></h3>
         <p>
           Windows 10 이상의 운영체제에서 고해상도 모니터 이용시 높은 DPI 설정을 이용하면 프로그램이 정상 작동하지 않습니다.
           아래 두 가지 방법 중 하나를 적용 후, 재실행 후 다시 시도해보세요.
